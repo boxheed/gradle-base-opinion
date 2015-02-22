@@ -1,0 +1,37 @@
+buildscript {
+	repositories {
+		mavenLocal()
+		jcenter()
+	}
+	dependencies {
+        classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
+		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
+    }
+}
+
+
+apply plugin: 'pl.allegro.tech.build.axion-release'
+apply plugin: 'com.fizzpod.gitignore'
+
+repositories {
+    jcenter()
+	mavenLocal()
+}
+
+scmVersion {
+    tag {
+        prefix = 'release'
+    }
+}
+
+group = 'com.fizzpod'
+version = scmVersion.version
+
+
+gitignore {
+	ignore 'build'
+	ignore '.gradle'
+	ignore 'bin'
+}
+
+
