@@ -41,12 +41,10 @@ bintray {
 	user = hasProperty('bintray_user')? bintray_user: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
 	key = hasProperty('bintray_api_key')? bintray_api_key: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
 
-//        publications = ['mavenJava'] //When uploading Maven-based publication files
 	dryRun = false //Whether to run this as dry-run, without deploying
 	publish = true //If version should be auto published after an upload
 	pkg {
 		repo = 'maven'
-//            userOrg = 'myorg' //An optional organization name when the repo belongs to one of the user's orgs
 		name = rootProject.name
 //            desc = 'what a fantastic package indeed!'
 //            websiteUrl = 'https://github.com/bintray/bintray-examples'
