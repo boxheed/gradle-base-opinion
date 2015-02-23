@@ -6,18 +6,19 @@ buildscript {
 	dependencies {
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
 		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
-		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
     }
 }
 apply plugin: 'java'
 apply plugin: 'maven'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-base.gradle'
 
+
 dependencies {
 	runtime 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
 	runtime 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
 	runtime 'com.fizzpod:gradle-pater-build-plugin:1.0.0'
-	runtime 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
+	runtime 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -35,16 +36,23 @@ artifacts {
     archives javadocJar
 }
 
-
-
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar 
+            artifact javadocJar
+        }
+    }
+}
 
 bintray {
-    publish = project.publish //['mavenJava'] //When uploading Maven-based publication files
+    publications = ['mavenJava'] //When uploading Maven-based publication files
 	pkg {
         websiteUrl = 'https://github.com/boxheed/gradle-base-opinion'
         issueTrackerUrl = 'https://github.com/boxheed/gradle-base-opinion/issues'
         vcsUrl = 'https://github.com/boxheed/gradle-base-opinion.git'
-		labels = ['gradle', 'opinion']
-		publicDownloadNumbers = true
+		labels = ['gradle', 'opinion', 'gradle-pater-build-plugin', 'plugin']
 	}
 }
+
