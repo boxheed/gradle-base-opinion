@@ -1,16 +1,3 @@
-buildscript {
-	repositories {
-		mavenLocal()
-		jcenter()
-	}
-	dependencies {
-        classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
-		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
-		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
-    }
-}
-
-
 apply plugin: 'pl.allegro.tech.build.axion-release'
 apply plugin: 'com.fizzpod.gitignore'
 apply plugin: 'com.jfrog.bintray'
@@ -35,8 +22,6 @@ gitignore {
 	ignore 'bin'
 }
 
-
-
 bintray {
 	user = rootProject.hasProperty('bintray_user')? bintray_user: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
 	key = rootProject.hasProperty('bintray_api_key')? bintray_api_key: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
@@ -47,7 +32,6 @@ bintray {
 		repo = 'maven'
 		name = rootProject.name
 		licenses = ['Apache-2.0']
-		labels = ['example', 'gradle', 'bintray']
 		publicDownloadNumbers = true
 	}
 }
