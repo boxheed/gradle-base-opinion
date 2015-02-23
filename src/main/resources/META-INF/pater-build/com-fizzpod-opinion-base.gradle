@@ -38,18 +38,14 @@ gitignore {
 
 
 bintray {
-	user = hasProperty('bintray_user')? bintray_user: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
-	key = hasProperty('bintray_api_key')? bintray_api_key: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
+	user = rootProject.hasProperty('bintray_user')? bintray_user: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
+	key = rootProject.hasProperty('bintray_api_key')? bintray_api_key: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
 
 	dryRun = false //Whether to run this as dry-run, without deploying
 	publish = true //If version should be auto published after an upload
 	pkg {
 		repo = 'maven'
 		name = rootProject.name
-//            desc = 'what a fantastic package indeed!'
-//            websiteUrl = 'https://github.com/bintray/bintray-examples'
-//            issueTrackerUrl = 'https://github.com/bintray/bintray-examples/issues'
-//            vcsUrl = 'https://github.com/bintray/bintray-examples.git'
 		licenses = ['Apache-2.0']
 		labels = ['example', 'gradle', 'bintray']
 		publicDownloadNumbers = true
