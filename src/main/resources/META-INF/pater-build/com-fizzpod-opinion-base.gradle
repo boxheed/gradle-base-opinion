@@ -32,7 +32,9 @@ bintray {
 	dryRun = false //Whether to run this as dry-run, without deploying
 	publish = true //If version should be auto published after an upload
 	pkg {
-		publicDownloadNumbers = true
+		websiteUrl = project.hasProperty('bintray_websiteUrl')? bintray_websiteUrl: 'https://github.com/boxheed/' + project.name
+		issueTrackerUrl = project.hasProperty('bintray_issueTrackerUrl')? bintray_issueTrackerUrl: 'https://github.com/boxheed/' + project.name + '/issues'
+        vcsUrl = project.hasProperty('bintray_vcsUrl')? bintray_vcsUrl: 'https://github.com/boxheed/' + project.name + '.git'
 		repo = 'maven'
 		name = rootProject.name
 		licenses = ['Apache-2.0']
