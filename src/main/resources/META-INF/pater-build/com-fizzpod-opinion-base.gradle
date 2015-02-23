@@ -1,6 +1,6 @@
 apply plugin: 'pl.allegro.tech.build.axion-release'
 apply plugin: 'com.fizzpod.gitignore'
-apply plugin: 'com.jfrog.bintray'
+
 
 repositories {
     jcenter()
@@ -22,17 +22,5 @@ gitignore {
 	ignore 'bin'
 }
 
-bintray {
-	user = rootProject.hasProperty('bintray_user')? bintray_user: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
-	key = rootProject.hasProperty('bintray_api_key')? bintray_api_key: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
 
-	dryRun = false //Whether to run this as dry-run, without deploying
-	publish = true //If version should be auto published after an upload
-	pkg {
-		repo = 'maven'
-		name = rootProject.name
-		licenses = ['Apache-2.0']
-		publicDownloadNumbers = true
-	}
-}
 

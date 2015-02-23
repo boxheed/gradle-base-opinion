@@ -12,6 +12,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'maven'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-base.gradle'
+apply plugin: 'com.jfrog.bintray'
 
 dependencies {
 	runtime 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
@@ -47,12 +48,20 @@ publishing {
 
 bintray {
     publications = ['mavenJava'] //When uploading Maven-based publication files
-
+	user = rootProject.hasProperty('bintray_user')? bintray_user: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
+	key = rootProject.hasProperty('bintray_api_key')? bintray_api_key: 'undefined' //this usually comes from gradle.properties file in ~/.gradle
+	dryRun = false //Whether to run this as dry-run, without deploying
+	publish = true //If version should be auto published after an upload
 	pkg {
         websiteUrl = 'https://github.com/boxheed/gradle-base-opinion'
         issueTrackerUrl = 'https://github.com/boxheed/gradle-base-opinion/issues'
         vcsUrl = 'https://github.com/boxheed/gradle-base-opinion.git'
 		labels = ['gradle', 'opinion', 'gradle-pater-build-plugin', 'plugin']
 		publicDownloadNumbers = true
+		repo = 'maven'
+		name = rootProject.name
+		licenses = ['Apache-2.0']
+		publicDownloadNumbers = true
 	}
 }
+
