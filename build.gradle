@@ -49,9 +49,6 @@ publishing {
 bintray {
     publications = ['mavenJava'] //When uploading Maven-based publication files
 	pkg {
-        websiteUrl = 'https://github.com/boxheed/gradle-base-opinion'
-        issueTrackerUrl = 'https://github.com/boxheed/gradle-base-opinion/issues'
-        vcsUrl = 'https://github.com/boxheed/gradle-base-opinion.git'
 		labels = ['gradle', 'opinion', 'gradle-pater-build-plugin', 'plugin']
 	}
 }
