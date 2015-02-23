@@ -6,12 +6,14 @@ buildscript {
 	dependencies {
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
 		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
     }
 }
 
 
 apply plugin: 'pl.allegro.tech.build.axion-release'
 apply plugin: 'com.fizzpod.gitignore'
+apply plugin: 'com.jfrog.bintray'
 
 repositories {
     jcenter()
@@ -27,11 +29,33 @@ scmVersion {
 group = 'com.fizzpod'
 version = scmVersion.version
 
-
 gitignore {
 	ignore 'build'
 	ignore '.gradle'
 	ignore 'bin'
 }
 
+
+
+bintray {
+	user = bintray_user //this usually comes from gradle.properties file in ~/.gradle
+	key = bintray_api_key //this usually comes from gradle.properties file in ~/.gradle
+
+//        publications = ['mavenJava'] //When uploading Maven-based publication files
+	dryRun = false //Whether to run this as dry-run, without deploying
+	publish = true //If version should be auto published after an upload
+	pkg {
+//            repo = 'myrepo'
+		repo = 'maven'
+//            userOrg = 'myorg' //An optional organization name when the repo belongs to one of the user's orgs
+		name = 'gradle-example'
+//            desc = 'what a fantastic package indeed!'
+//            websiteUrl = 'https://github.com/bintray/bintray-examples'
+//            issueTrackerUrl = 'https://github.com/bintray/bintray-examples/issues'
+//            vcsUrl = 'https://github.com/bintray/bintray-examples.git'
+		licenses = ['Apache-2.0']
+		labels = ['example', 'gradle', 'bintray']
+		publicDownloadNumbers = true
+	}
+}
 

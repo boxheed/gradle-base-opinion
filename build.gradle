@@ -6,6 +6,7 @@ buildscript {
 	dependencies {
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
 		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
     }
 }
 apply plugin: 'java'
@@ -16,4 +17,5 @@ dependencies {
 	runtime 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
 	runtime 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
 	runtime 'com.fizzpod:gradle-pater-build-plugin:1.0.0'
+	runtime 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
 }
