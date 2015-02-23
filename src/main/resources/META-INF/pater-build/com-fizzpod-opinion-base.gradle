@@ -1,5 +1,7 @@
 apply plugin: 'pl.allegro.tech.build.axion-release'
 apply plugin: 'com.fizzpod.gitignore'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
 
 
 repositories {
