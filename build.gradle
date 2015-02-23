@@ -36,18 +36,10 @@ artifacts {
 }
 
 
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-			artifact sourcesJar 
-			artifact javadocJar
-		}
-	}
-}
+
 
 bintray {
-    publications = ['mavenJava'] //When uploading Maven-based publication files
+    publish = project.publish //['mavenJava'] //When uploading Maven-based publication files
 	pkg {
         websiteUrl = 'https://github.com/boxheed/gradle-base-opinion'
         issueTrackerUrl = 'https://github.com/boxheed/gradle-base-opinion/issues'
