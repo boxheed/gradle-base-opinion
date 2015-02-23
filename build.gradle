@@ -36,7 +36,15 @@ artifacts {
 }
 
 
-
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			artifact sourcesJar 
+			artifact javadocJar
+		}
+	}
+}
 
 bintray {
     publications = ['mavenJava'] //When uploading Maven-based publication files
