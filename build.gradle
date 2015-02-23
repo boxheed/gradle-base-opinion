@@ -12,8 +12,7 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'maven'
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-base.gradle'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
+
 
 dependencies {
 	runtime 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
