@@ -7,10 +7,13 @@ buildscript {
         classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
 		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
 		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+		classpath 'com.netflix.nebula:gradle-info-plugin:2.2.0'
     }
 }
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'info'
+
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-base.gradle'
 
 
@@ -52,4 +55,5 @@ bintray {
 		labels = ['gradle', 'opinion', 'gradle-pater-build-plugin', 'plugin']
 	}
 }
+
 
