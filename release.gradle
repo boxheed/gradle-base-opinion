@@ -20,13 +20,25 @@ bintray {
 	key = System.env.BINTRAY_KEY
 	dryRun = false //Whether to run this as dry-run, without deploying
 	publish = true //If version should be auto published after an upload
+	publications = ['mavenJava']
 	pkg {
 		websiteUrl = 'https://github.com/boxheed/' + project.name
 		issueTrackerUrl = 'https://github.com/boxheed/' + project.name + '/issues'
         vcsUrl = 'https://github.com/boxheed/' + project.name + '.git'
+		labels = ['gradle', 'opinion', 'gradle-pater-build-plugin', 'plugin']
 		repo = 'maven'
 		name = rootProject.name
 		licenses = ['Apache-2.0']
 		publicDownloadNumbers = true
 	}
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourcesJar 
+            artifact javadocJar
+        }
+    }
 }
