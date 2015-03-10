@@ -4,25 +4,25 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-        classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
-		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
-		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-		classpath 'com.netflix.nebula:gradle-info-plugin:2.2.0'
+        classpath 'pl.allegro.tech.build:axion-release-plugin:1.2.1'
+		classpath 'com.fizzpod:gradle-gitignore-plugin:1.0.3'
+		classpath 'com.fizzpod:gradle-extended-info-plugin:0.1.4'
+		classpath 'com.fizzpod:gradle-layout-plugin:0.1.6'
     }
 }
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'info'
 
 apply from: './src/main/resources/META-INF/pater-build/com-fizzpod-opinion-base.gradle'
 
 
 dependencies {
-	runtime 'pl.allegro.tech.build:axion-release-plugin:1.2.0'
-	runtime 'com.fizzpod:gradle-gitignore-plugin:1.0.0'
-	runtime 'com.fizzpod:gradle-pater-build-plugin:1.0.0'
-	runtime 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+	runtime 'pl.allegro.tech.build:axion-release-plugin:1.2.1'
+	runtime 'com.fizzpod:gradle-gitignore-plugin:1.0.3'
+	runtime 'com.fizzpod:gradle-extended-info-plugin:0.1.4'
+	runtime 'com.fizzpod:gradle-layout-plugin:0.1.6'
 }
+
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
@@ -34,26 +34,9 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+
 artifacts {
     archives sourcesJar
     archives javadocJar
 }
-
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-            artifact sourcesJar 
-            artifact javadocJar
-        }
-    }
-}
-
-bintray {
-    publications = ['mavenJava'] //When uploading Maven-based publication files
-	pkg {
-		labels = ['gradle', 'opinion', 'gradle-pater-build-plugin', 'plugin']
-	}
-}
-
 
