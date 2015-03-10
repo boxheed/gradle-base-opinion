@@ -17,6 +17,8 @@ before_script:
   - if [[ $SHIPPABLE_JDK_VERSION == "oraclejdk8" ]] ; then export JAVA_HOME="/usr/lib/jvm/java-8-oracle"; export PATH="$PATH:/usr/lib/jvm/java-8-oracle/bin"; export java_path="/usr/lib/jvm/java-8-oracle/jre/bin/java"; fi
   - update-alternatives --set java $java_path
   - java -version
+#  - mkdir -p shippable/testresults
+#  - mkdir -p shippable/codecoverage
   - mkdir -p shippable/artifacts
   - git remote set-url origin git@github.com:boxheed/gradle-base-opinion.git
   
