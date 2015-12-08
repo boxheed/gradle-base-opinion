@@ -20,7 +20,8 @@ before_script:
 #  - mkdir -p shippable/testresults
 #  - mkdir -p shippable/codecoverage
   - mkdir -p shippable/artifacts
-  - git remote set-url origin git@github.com:boxheed/gradle-base-opinion.git
+  - git remote set-url origin git@github.com:$REPO_NAME.git
+  - git config --get remote.origin.url
   
 script:
   - ./gradlew clean build
